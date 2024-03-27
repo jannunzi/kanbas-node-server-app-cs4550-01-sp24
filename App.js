@@ -1,5 +1,6 @@
 // const express = require("express");
 import express from "express";
+import mongoose from "mongoose";
 import Hello from "./Hello.js";
 import Courses from "./Courses/routes.js";
 import Modules from "./Modules/routes.js";
@@ -8,6 +9,7 @@ import session from "express-session";
 import SessionExercises from "./SessionExercises.js";
 import Users from "./Users/routes.js";
 
+mongoose.connect("mongodb://localhost:27017/kanbas-sp24-tue");
 const app = express();
 app.use(
   cors({
