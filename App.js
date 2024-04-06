@@ -8,6 +8,7 @@ import cors from "cors";
 import session from "express-session";
 import SessionExercises from "./SessionExercises.js";
 import Users from "./Users/routes.js";
+import LikesRoutes from "./Napster/likes/routes.js";
 
 mongoose.connect("mongodb://localhost:27017/kanbas-sp24-tue");
 const app = express();
@@ -32,5 +33,6 @@ Courses(app);
 Modules(app);
 SessionExercises(app);
 Users(app);
+LikesRoutes(app);
 
 app.listen(4000);
