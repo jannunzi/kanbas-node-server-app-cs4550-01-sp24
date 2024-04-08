@@ -9,8 +9,14 @@ import session from "express-session";
 import SessionExercises from "./SessionExercises.js";
 import Users from "./Users/routes.js";
 import LikesRoutes from "./Napster/likes/routes.js";
+import ChatCompletionRoutes from "./openai/chat/routes.js";
+import ImageGenerationRoutes from "./openai/images/routes.js";
+import VisionRoutes from "./openai/vision/routes.js";
+import Text2SpeechRoutes from "./openai/tts/routes.js";
+import SpeechToTextRoutes from "./openai/stt/routes.js";
+import { join } from "path";
 
-mongoose.connect("mongodb://localhost:27017/kanbas-sp24-tue");
+// mongoose.connect("mongodb://localhost:27017/kanbas-sp24-tue");
 const app = express();
 app.use(
   cors({
@@ -27,6 +33,7 @@ app.use(
     cookie: { secure: false },
   })
 );
+app.use("/speech", express.static(join(process.cwd(), "openai/tts")));
 
 Hello(app);
 Courses(app);
@@ -34,5 +41,10 @@ Modules(app);
 SessionExercises(app);
 Users(app);
 LikesRoutes(app);
+ChatCompletionRoutes(app);
+ImageGenerationRoutes(app);
+VisionRoutes(app);
+Text2SpeechRoutes(app);
+SpeechToTextRoutes(app);
 
 app.listen(4000);
